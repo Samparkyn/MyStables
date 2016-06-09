@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Stable list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Capacity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for stable in stables %}
+            <tr>
+                <td><a href="{{ path('stable_show', { 'id': stable.id }) }}">{{ stable.id }}</a></td>
+                <td>{{ stable.name }}</td>
+                <td>{{ stable.location }}</td>
+                <td>{{ stable.capacity }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('stable_show', { 'id': stable.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('stable_edit', { 'id': stable.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('stable_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

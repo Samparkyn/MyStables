@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Horse list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Breed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for horse in horses %}
+            <tr>
+                <td><a href="{{ path('horse_show', { 'id': horse.id }) }}">{{ horse.id }}</a></td>
+                <td>{{ horse.name }}</td>
+                <td>{{ horse.age }}</td>
+                <td>{{ horse.sex }}</td>
+                <td>{{ horse.breed }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('horse_show', { 'id': horse.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('horse_edit', { 'id': horse.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('horse_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

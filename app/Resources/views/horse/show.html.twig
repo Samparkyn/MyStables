@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Horse</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ horse.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ horse.name }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ horse.age }}</td>
+            </tr>
+            <tr>
+                <th>Sex</th>
+                <td>{{ horse.sex }}</td>
+            </tr>
+            <tr>
+                <th>Breed</th>
+                <td>{{ horse.breed }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('horse_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('horse_edit', { 'id': horse.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
